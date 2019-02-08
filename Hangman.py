@@ -16,9 +16,15 @@ def hangman():
 	
 	while guess >= 0:
 		if ''.join(board).lower() == ''.join(word).lower():
+			print("\nThe word is:")
+			print(board)
 			print(f"\nYou have guessed the word correctly: {''.join(word)}")
 			break
+		
+		print("\nThe word is:")
+		print(board)
 		my_guess = input(f"\nGuess a letter: (you have {guess} guesses left)\n>").upper()
+		
 		if len(my_guess) == 1:
 			if my_guess in word:
 				if my_guess not in board:
@@ -27,8 +33,7 @@ def hangman():
 						if word[i] == my_guess:
 							board[i] = my_guess
 					guess -= 1
-					print("\nThe word is:")
-					print(board)
+
 					print("\nYour guesses:")
 					print(guessed_letters)
 				
@@ -38,16 +43,14 @@ def hangman():
 			elif my_guess not in word:
 				if my_guess not in guessed_letters:
 					guessed_letters.append(my_guess)
-					print("\nThe word is:")
-					print(board)
+
 					print("\nYour guesses:")
 					print(guessed_letters)
 					guess -= 1
 				
 				else:
 					print("\nYou have tried that letter already. Please try again.")
-					print("\nThe word is:")
-					print(board)
+
 					print("\nYour guesses:")
 					print(guessed_letters)
 		else:
